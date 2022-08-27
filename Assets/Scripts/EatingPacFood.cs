@@ -8,8 +8,21 @@ public class EatingPacFood : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Destroy(gameObject);
-            ScoreCounter.instance.AddPoints();
+            ScoreCounter.instance.PelletCounter -= 1;
+            
+            if (gameObject.tag == "Pellet")
+            {
+                Destroy(gameObject);
+                ScoreCounter.instance.AddPoints(10);
+                PacmanMovement.instance.playPelletSound();
+            }
+
+            else if (gameObject.tag == "PowerPellet")
+            {
+                Destroy(gameObject);
+                ScoreCounter.instance.AddPoints(50);
+                PacmanMovement.instance.energize();
+            }
         }
     }
 }
