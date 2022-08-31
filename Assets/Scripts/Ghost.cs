@@ -246,7 +246,7 @@ public class Ghost : MonoBehaviour
 			    }
 		    }
 	    }
-	    else if (pacman.pacmanState == PacmanMovement.PacmanStates.Energized && (!eaten || pacman.ghostSeries == 0) && respawned && leftHome)
+	    else if ( (pacman.pacmanState == PacmanMovement.PacmanStates.Energized) && respawned && leftHome && (!eaten || pacman.ghostSeries == 0))
 	    {
 		    // Causes Ghost to get scared and turn around
 		    if (ghostState == GhostStates.Chasing || ghostState == GhostStates.Scatter)
@@ -260,10 +260,7 @@ public class Ghost : MonoBehaviour
 	    }
     }
 
-    /// <summary>
-    /// PLACE FOR ALGORITHMs
-    /// </summary>
-    /// <returns></returns>
+	// Movement algorithms
 
     GameObject getBestDirection(Vector2 enemy)
     {
